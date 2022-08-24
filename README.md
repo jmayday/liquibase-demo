@@ -3,6 +3,11 @@
 # liquibase-demo
 Minimalistic project presenting issue with liquibase mongodb preconditions extension
 
+I've used this Docker image:
+```
+docker run --name mongodb5 -d -p 27018:27017 -v /Users/mayday/projects/liquibase/mongo5_volume/:/data/db -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=pass mongo:5.0.10
+```
+
 mvn liquibase:status 
 ```
 [INFO] Opened connection [connectionId{localValue:3, serverValue:611}] to localhost:27018
