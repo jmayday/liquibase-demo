@@ -1,0 +1,49 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="changeset_20220818_113_0" author="jmayday">
+        <ext:createCollection collectionName="testCollection">
+            <ext:options>
+            {
+                validator: {
+                    $jsonSchema: {
+                        bsonType: "object",
+                        required: ["userId", "status"],
+                        properties: {
+                            userId: {
+                                bsonType: "string",
+                                description: "UerID"
+                            },
+                            status: {
+                                bsonType: "string",
+                                description: "Status"
+                            }
+                        }
+                    }
+                },
+                validationAction: "warn",
+                validationLevel: "strict"
+            }
+            </ext:options>
+        </ext:createCollection>
+	</changeSet>
+
+    <changeSet id="changeset_20220818_1226" author="jmayday">
+        <ext:insertMany collectionName="testCollection">
+            <ext:documents>
+                [
+                { userId: 21232, status: 'active' },
+                { userId: 33333, status: 'active' }
+                ]
+            </ext:documents>
+        </ext:insertMany>
+    </changeSet>
+
+</databaseChangeLog>
